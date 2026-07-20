@@ -36,6 +36,7 @@ book:
       chapters:
         - book/chapters/01-random-events/01-frequency-and-probability.qmd
         - book/chapters/01-random-events/02-multiplication-and-addition-theorems.qmd
+        - book/chapters/01-random-events/03-repeated-trials.qmd
     - part: "Данные статистики продаж - случайные величины как количественная сторона случайных явлений"
       chapters:
         - book/chapters/02-sales-statistics/01-sales-statistics.qmd
