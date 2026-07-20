@@ -1,5 +1,7 @@
-pylint
-pylance
-matplotlib
-numpy
-shapely
+# Генерация рисунков (Python 3.11)
+matplotlib>=3.10,<3.12
+numpy>=2.0,<2.5
+shapely>=2.1,<2.2
+
+# Проверка кода
+pylint>=4,<5
