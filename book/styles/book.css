@@ -26,7 +26,7 @@
 
 .repo-material {
   display: grid;
-  grid-template-columns: 7.25rem minmax(0, 1fr);
+  grid-template-columns: 6.5rem minmax(0, 1fr);
   width: min(100%, 42rem);
   margin: 1rem 0 1.5rem;
   border: 1px solid #b9c4c9;
@@ -37,21 +37,21 @@
 .repo-material-qr {
   display: grid;
   place-items: center;
-  min-height: 7.25rem;
-  padding: 0.7rem;
+  min-height: 6.5rem;
+  padding: 0.55rem;
   border-right: 1px solid #b9c4c9;
 }
 
 .repo-material-qr img {
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .repo-material-path {
-  display: flex;
-  align-items: center;
+  display: grid;
+  place-items: center start;
   min-width: 0;
-  padding: 1rem 1.2rem;
+  padding: 0.8rem 1.1rem;
 }
 
 .repo-material-path code {

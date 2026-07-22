@@ -46,11 +46,12 @@
   \par\medskip
   \begin{center}
     \small
-    \setlength{\tabcolsep}{6pt}%
+    \setlength{\tabcolsep}{5pt}%
     \renewcommand{\arraystretch}{1}%
-    \begin{tabular}{|>{\centering\arraybackslash}m{28mm}|>{\raggedright\arraybackslash}m{105mm}|}
+    \begin{tabular}{|c|l|}
       \hline
-      \parbox[c][\dimexpr28mm+2\tabcolsep\relax][c]{28mm}{\centering\includegraphics[width=23mm]{#1}} & \href{#2}{\texttt{\detokenize{#3}}} \\
+      \parbox[c][26mm][c]{25mm}{\centering\includegraphics[width=21mm]{#1}} &
+      \parbox[c][26mm][c]{108mm}{\raggedright\href{#2}{\texttt{\detokenize{#3}}}} \\
       \hline
     \end{tabular}
   \end{center}
