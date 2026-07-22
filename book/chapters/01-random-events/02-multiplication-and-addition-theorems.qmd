@@ -25,7 +25,7 @@ $$ {#eq-02-disjoint-events}
 Если события несовместны, то выполнение одного автоматически исключает выполнение другого.
 
 
-![Диаграмма Венна для несовместных событий A и B](../../images/07_event_disjoint.png){#fig-venn-disjoint}
+![Диаграмма Венна для несовместных событий A и B](../../images/07_event_disjoint.png){#fig-venn-disjoint fig-pos="H"}
 
 ::: {.example #exm-02-02}
 
@@ -136,7 +136,7 @@ $$
 P(A_1) + P(A_2) + \ldots + P(A_n) = 1.
 $$ {#eq-02-complete-group}
 
-![Диаграмма полной группы несовместных событий A₁, A₂ и A₃](../../images/08_complete_group.png){#fig-complete-group}
+![Диаграмма полной группы несовместных событий A₁, A₂ и A₃](../../images/08_complete_group.png){#fig-complete-group fig-pos="H"}
 
 ::: {.example #exm-02-07}
 

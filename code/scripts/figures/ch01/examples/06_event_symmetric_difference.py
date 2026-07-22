@@ -50,7 +50,7 @@ def draw(ax):
         for patch in shape_to_patches(shape, facecolor='none', edgecolor='black'):
             ax.add_patch(patch)
 
-    for label, x in [('A', 1.7), ('B', 4.3)]:
+    for label, x in [('A', 2.0), ('B', 4.0)]:
         text = ax.text(x, 2, label, ha='center', va='center', fontsize=18, fontstyle='italic')
         text.set_path_effects([path_effects.Stroke(linewidth=4, foreground='white'), path_effects.Normal()])
     ax.text(3, 0.55, 'A △ B', ha='center', va='center', fontsize=14, fontstyle='italic', bbox=formula_box)
