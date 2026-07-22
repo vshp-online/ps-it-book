@@ -56,6 +56,18 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         run: cp _book/probability-statistics-for-it-entrepreneurs.pdf "_book/ps-it-book-${BOOK_VERSION}.pdf"
 
+      - name: Prepare release notes
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          mkdir -p tmp
+          awk -v release="${GITHUB_REF_NAME}" '
+            index($0, "## " release " ") == 1 { copy = 1; next }
+            copy && /^## / { exit }
+            copy { print }
+          ' CHANGELOG.md > tmp/release-notes.md
+          test -s tmp/release-notes.md
+
       - name: Publish versioned release
         if: startsWith(github.ref, 'refs/tags/v')
         env:
@@ -65,7 +77,7 @@ jobs:
             "_book/ps-it-book-${BOOK_VERSION}.pdf" \
             --verify-tag \
             --title "Учебное пособие ${GITHUB_REF_NAME}" \
-            --generate-notes
+            --notes-file tmp/release-notes.md
 
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main'
