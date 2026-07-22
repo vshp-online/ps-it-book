@@ -50,6 +50,32 @@ quarto render --to html
 quarto render --to pdf
 ```
 
+### Быстрые проверки
+
+Для небольших правок не требуется каждый раз собирать всю книгу. В проекте
+есть единый сценарий проверки; его промежуточные результаты сохраняются в
+исключённой из Git папке `tmp/check/`.
+
+```bash
+# Один изменённый раздел в HTML
+scripts/check-book.sh quick book/chapters/01-random-events/05-interval-estimation.qmd
+
+# Один раздел в выбранном формате
+scripts/check-book.sh format book/chapters/01-random-events/05-interval-estimation.qmd pdf
+
+# Текущая часть как сокращённая книга (сейчас — первая)
+scripts/check-book.sh part html
+
+# Полная контрольная сборка HTML + PDF
+scripts/check-book.sh full
+```
+
+Режимы `quick` и `format` собирают раздел как самостоятельный документ: они
+проверяют текст и локальную вёрстку, но не воспроизводят книжную навигацию,
+сквозную нумерацию и межглавные ссылки. Режим `part` сохраняет устройство книги,
+но ограничивает её текущей частью. Полная сборка по-прежнему обязательна после
+смыслового этапа и перед выпуском версии.
+
 В дальнейшем планируется также подготовить экспорт в редактируемые форматы
 **DOCX** и **ODT**. Эти версии предназначены прежде всего для печати,
 рецензирования и внесения правок в Microsoft Word или LibreOffice Writer;
@@ -76,6 +102,9 @@ tlmgr install libertinus-fonts
 ```txt
 .
 ├── _quarto.yml
+├── _quarto-check.yml
+├── _quarto-full.yml
+├── _quarto-part.yml
 ├── book
 │   ├── chapters
 │   └── images
@@ -88,11 +117,16 @@ tlmgr install libertinus-fonts
 ├── LICENSE.md
 ├── README.md
 ├── references.bib
+├── scripts
+│   └── check-book.sh
 └── references.qmd
 
 ```
 
-- `_quarto.yml` — конфигурация проекта Quarto Book (форматы вывода, оглавление, параметры PDF/HTML, шрифты и т.п.).
+- `_quarto.yml` — общая конфигурация проекта Quarto Book (форматы вывода, параметры PDF/HTML, шрифты и т.п.).
+- `_quarto-full.yml` — полный состав книги; этот профиль используется по умолчанию и в GitHub Actions.
+- `_quarto-part.yml` — сокращённый состав текущей части с книжной навигацией и сквозными ссылками.
+- `_quarto-check.yml` — самостоятельная быстрая сборка отдельных QMD-файлов в `tmp/check/`.
 - `index.qmd` — входная страница книги (первый элемент `chapters`).
 - `references.qmd` — страница списка литературы.
 - `references.bib` — библиография в формате BibTeX.

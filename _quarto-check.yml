@@ -1,0 +1,6 @@
+project:
+  type: default
+  output-dir: tmp/check
+  resources:
+    - code/data/interval-estimation-calc.ods
+    - "!tmp/**"

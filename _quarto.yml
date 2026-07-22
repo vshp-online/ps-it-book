@@ -2,6 +2,10 @@ project:
   type: book
   resources:
     - code/data/interval-estimation-calc.ods
+    - "!tmp/**"
+
+profile:
+  default: full
 
 lang: ru
 
@@ -32,31 +36,6 @@ book:
     - "Н.Н. Зубов"
     - "П.С. Ткачев"
     - "С.З. Умаров"
-  chapters:
-    - index.qmd
-    - part: "Случайные события как качественная сторона случайных явлений в бизнесе"
-      chapters:
-        - book/chapters/01-random-events/01-frequency-and-probability.qmd
-        - book/chapters/01-random-events/02-multiplication-and-addition-theorems.qmd
-        - book/chapters/01-random-events/03-repeated-trials.qmd
-        - book/chapters/01-random-events/04-total-probability-and-bayes.qmd
-        - book/chapters/01-random-events/05-interval-estimation.qmd
-        - book/chapters/01-random-events/06-frequency-calculation-libreoffice.qmd
-        - book/chapters/01-random-events/07-self-check.qmd
-        - book/chapters/01-random-events/08-test-tasks.qmd
-    - part: "Данные статистики продаж - случайные величины как количественная сторона случайных явлений"
-      chapters:
-        - book/chapters/02-sales-statistics/01-sales-statistics.qmd
-    - part: "Использование методов математической статистики в бизнесе"
-      chapters:
-        - book/chapters/03-statistical-methods/01-statistical-methods.qmd
-    - part: "Выявление и оценка связи между признаками"
-      chapters:
-        - book/chapters/04-associations/01-associations.qmd
-    - part: "Динамические ряды и методы их анализа в бизнесе"
-      chapters:
-        - book/chapters/05-time-series-analysis/01-time-series-analysis.qmd
-    - references.qmd
 
 bibliography: references.bib
 nocite: '@*'

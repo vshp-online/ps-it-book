@@ -1,0 +1,20 @@
+project:
+  output-dir: tmp/part
+  resources:
+    - code/data/interval-estimation-calc.ods
+    - "!tmp/**"
+
+book:
+  chapters:
+    - index.qmd
+    - part: "Случайные события как качественная сторона случайных явлений в бизнесе"
+      chapters:
+        - book/chapters/01-random-events/01-frequency-and-probability.qmd
+        - book/chapters/01-random-events/02-multiplication-and-addition-theorems.qmd
+        - book/chapters/01-random-events/03-repeated-trials.qmd
+        - book/chapters/01-random-events/04-total-probability-and-bayes.qmd
+        - book/chapters/01-random-events/05-interval-estimation.qmd
+        - book/chapters/01-random-events/06-frequency-calculation-libreoffice.qmd
+        - book/chapters/01-random-events/07-self-check.qmd
+        - book/chapters/01-random-events/08-test-tasks.qmd
+    - references.qmd
