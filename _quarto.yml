@@ -1,7 +1,5 @@
 project:
   type: book
-  pre-render:
-    - python3 -B code/scripts/build/generate_build_info.py
   resources:
     - code/data/interval-estimation-calc.ods
 

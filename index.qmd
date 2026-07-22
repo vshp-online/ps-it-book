@@ -28,6 +28,8 @@
 
 :::
 
-{{< include tmp/build-info.qmd >}}
+::: {.build-info}
+**Сборка книги:** `{{< env BOOK_VERSION локальная >}}` · {{< env BOOK_BUILD_TIME "время не задано" >}}
+:::
 
 [^galileo]: Галилео Галилей (Galileo Galilei, 1564 — 1642) — итальянский физик, механик, астроном и математик.
