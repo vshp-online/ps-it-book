@@ -29,4 +29,5 @@ book:
         - book/chapters/02-sales-statistics/06-distribution-plots.qmd
         - book/chapters/02-sales-statistics/07-descriptive-statistics.qmd
         - book/chapters/02-sales-statistics/08-self-check.qmd
+        - book/chapters/02-sales-statistics/09-test-tasks.qmd
     - references.qmd
