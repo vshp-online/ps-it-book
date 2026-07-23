@@ -17,4 +17,7 @@ book:
         - book/chapters/01-random-events/06-frequency-calculation-libreoffice.qmd
         - book/chapters/01-random-events/07-self-check.qmd
         - book/chapters/01-random-events/08-test-tasks.qmd
+    - part: "Данные статистики продаж - случайные величины как количественная сторона случайных явлений"
+      chapters:
+        - book/chapters/02-sales-statistics/01-sales-statistics.qmd
     - references.qmd
