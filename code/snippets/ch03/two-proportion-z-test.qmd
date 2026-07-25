@@ -1,0 +1,9 @@
+```python
+from math import erfc, sqrt
+n_a, m_a, n_b, m_b = 1200, 48, 1250, 75
+p_a, p_b = m_a / n_a, m_b / n_b
+p_pool = (m_a + m_b) / (n_a + n_b)
+se_null = sqrt(p_pool * (1 - p_pool) * (1 / n_a + 1 / n_b))
+z = (p_a - p_b) / se_null
+print(f"z = {z:.4f}, p = {erfc(abs(z) / sqrt(2)):.4f}")
+```
