@@ -34,6 +34,7 @@ book:
       chapters:
         - book/chapters/03-statistical-methods/01-statistical-methods.qmd
         - book/chapters/03-statistical-methods/02-parameter-estimation.qmd
+        - book/chapters/03-statistical-methods/03-hypothesis-testing.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
