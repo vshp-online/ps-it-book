@@ -28,6 +28,7 @@ book:
         - book/chapters/03-statistical-methods/02-parameter-estimation.qmd
         - book/chapters/03-statistical-methods/03-hypothesis-testing.qmd
         - book/chapters/03-statistical-methods/04-inference-for-proportions.qmd
+        - book/chapters/03-statistical-methods/05-inference-for-mean-variance.qmd
     - part: "Выявление и оценка связи между признаками"
       chapters:
         - book/chapters/04-associations/01-associations.qmd
