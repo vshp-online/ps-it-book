@@ -1,0 +1,30 @@
+```python
+import numpy as np
+from scipy.stats import ttest_ind, ttest_rel
+
+variant_a = np.array([
+    3.8, 5.2, 6.9, 2.5, 4.3, 5.9, 2.2, 4.0,
+    8.6, 7.6, 8.2, 7.8, 7.2, 3.4, 9.1, 6.4,
+])
+variant_b = np.array([
+    16.0, 6.4, 9.6, 6.6, 17.4, 8.6, 8.7, 6.5,
+    25.0, 12.5, 10.5, 17.7, 8.8, 15.2, 23.0, 5.7,
+])
+
+welch = ttest_ind(variant_a, variant_b, equal_var=False)
+print("Уэлч:", welch)
+print("95% ДИ:", welch.confidence_interval(confidence_level=0.95))
+
+before = np.array([
+    3800, 3700, 3300, 3600, 3100,
+    3200, 3200, 3400, 3500, 3600,
+])
+after = np.array([
+    4200, 3800, 3600, 3700, 3300,
+    3300, 3200, 3300, 3800, 3800,
+])
+
+paired = ttest_rel(after, before)
+print("Парный:", paired)
+print("95% ДИ:", paired.confidence_interval(confidence_level=0.95))
+```
