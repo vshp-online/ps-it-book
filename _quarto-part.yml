@@ -37,6 +37,9 @@ book:
         - book/chapters/03-statistical-methods/03-hypothesis-testing.qmd
         - book/chapters/03-statistical-methods/04-inference-for-proportions.qmd
         - book/chapters/03-statistical-methods/05-inference-for-mean-variance.qmd
+        - book/chapters/03-statistical-methods/06-comparison-of-means-and-variances.qmd
+        - book/chapters/03-statistical-methods/07-self-check.qmd
+        - book/chapters/03-statistical-methods/08-test-tasks.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
