@@ -40,6 +40,10 @@ book:
         - book/chapters/03-statistical-methods/06-comparison-of-means-and-variances.qmd
         - book/chapters/03-statistical-methods/07-self-check.qmd
         - book/chapters/03-statistical-methods/08-test-tasks.qmd
+    - part: "Выявление и оценка связи между признаками"
+      chapters:
+        - book/chapters/04-associations/01-associations.qmd
+        - book/chapters/04-associations/02-diagrams.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
