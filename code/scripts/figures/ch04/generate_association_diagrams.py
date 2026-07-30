@@ -1,4 +1,4 @@
-"""Создаёт вводные диаграммы для раздела о связи между признаками.
+"""Создаёт диаграммы для раздела о связи между признаками.
 
 Запускать из корня репозитория:
     python code/scripts/figures/ch04/generate_association_diagrams.py
@@ -210,13 +210,86 @@ def save_ishikawa_diagram() -> None:
     plt.close(figure)
 
 
+def save_regression_diagnostics() -> None:
+    """Показывает линию простой регрессии и соответствующие остатки."""
+    random = np.random.default_rng(42)
+    load = np.sort(random.uniform(8, 58, 34))
+    response = 2.4 + 0.23 * load + random.normal(0, 1.45, load.size)
+
+    slope, intercept = np.polyfit(load, response, 1)
+    fitted = intercept + slope * load
+    residuals = response - fitted
+
+    figure, (fit_axis, residual_axis) = plt.subplots(
+        2,
+        1,
+        figsize=(9.2, 7.0),
+        height_ratios=(1.8, 1),
+        sharex=True,
+    )
+
+    fit_axis.scatter(
+        load,
+        response,
+        s=48,
+        color=BLUE,
+        edgecolor="white",
+        linewidth=0.8,
+        alpha=0.9,
+        label="Наблюдения",
+    )
+    fit_axis.plot(
+        load,
+        fitted,
+        color=DARK_BLUE,
+        linewidth=2.2,
+        label="Линия регрессии",
+    )
+    fit_axis.set_ylabel("Время первого ответа, мин")
+    fit_axis.grid(color=GRID, linewidth=0.8, alpha=0.85)
+    fit_axis.set_axisbelow(True)
+    fit_axis.spines["top"].set_visible(False)
+    fit_axis.spines["right"].set_visible(False)
+    fit_axis.legend(frameon=False, loc="upper left")
+
+    residual_axis.scatter(
+        load,
+        residuals,
+        s=48,
+        color=BLUE,
+        edgecolor="white",
+        linewidth=0.8,
+        alpha=0.9,
+    )
+    residual_axis.axhline(0, color=DARK_BLUE, linewidth=1.5)
+    residual_axis.set(
+        xlabel="Нагрузка, обращений в час",
+        ylabel="Остаток, мин",
+    )
+    residual_axis.grid(color=GRID, linewidth=0.8, alpha=0.85)
+    residual_axis.set_axisbelow(True)
+    residual_axis.spines["top"].set_visible(False)
+    residual_axis.spines["right"].set_visible(False)
+
+    figure.tight_layout()
+    figure.savefig(
+        OUTPUT_DIR / "23_support_regression_diagnostics.png",
+        dpi=220,
+        bbox_inches="tight",
+        pad_inches=0.08,
+    )
+    plt.close(figure)
+
+
 def main() -> None:
-    """Создаёт обе иллюстрации."""
+    """Создаёт иллюстрации раздела."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     save_scatterplot()
     save_ishikawa_diagram()
+    save_regression_diagnostics()
     print("book/images/21_support_load_scatterplot.png")
     print("book/images/22_support_ishikawa_diagram.png")
+    print("book/images/23_support_regression_diagnostics.png")
 
 
 if __name__ == "__main__":
