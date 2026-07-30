@@ -1,0 +1,58 @@
+```python
+import numpy as np
+from scipy.stats import t
+
+data = np.loadtxt(
+    "code/data/support-regression.csv",
+    delimiter=",",
+    skiprows=1,
+)
+x, y = data[:, 1], data[:, 2]
+n = x.size
+
+x_mean, y_mean = x.mean(), y.mean()
+sxx = np.sum((x - x_mean) ** 2)
+sxy = np.sum((x - x_mean) * (y - y_mean))
+b1 = sxy / sxx
+b0 = y_mean - b1 * x_mean
+
+fitted = b0 + b1 * x
+residuals = y - fitted
+residual_std = np.sqrt(np.sum(residuals**2) / (n - 2))
+r = np.corrcoef(x, y)[0, 1]
+r_squared = 1 - np.sum(residuals**2) / np.sum((y - y_mean) ** 2)
+
+se_b1 = residual_std / np.sqrt(sxx)
+t_statistic = b1 / se_b1
+p_value = 2 * t.sf(abs(t_statistic), df=n - 2)
+
+alpha = 0.05
+t_critical = t.ppf(1 - alpha / 2, df=n - 2)
+slope_interval = (
+    b1 - t_critical * se_b1,
+    b1 + t_critical * se_b1,
+)
+
+x0 = 45
+prediction = b0 + b1 * x0
+se_mean = residual_std * np.sqrt(1 / n + (x0 - x_mean) ** 2 / sxx)
+se_prediction = residual_std * np.sqrt(
+    1 + 1 / n + (x0 - x_mean) ** 2 / sxx
+)
+mean_interval = (
+    prediction - t_critical * se_mean,
+    prediction + t_critical * se_mean,
+)
+prediction_interval = (
+    prediction - t_critical * se_prediction,
+    prediction + t_critical * se_prediction,
+)
+
+print(f"ŷ = {b0:.4f} + {b1:.4f}x")
+print(f"r = {r:.4f}; R² = {r_squared:.4f}")
+print(f"t = {t_statistic:.2f}; p = {p_value:.3e}")
+print("95%-й ДИ для b₁:", np.round(slope_interval, 4))
+print(f"Прогноз при x₀ = {x0}: {prediction:.4f}")
+print("95%-й ДИ среднего:", np.round(mean_interval, 4))
+print("95%-й предиктивный интервал:", np.round(prediction_interval, 4))
+```

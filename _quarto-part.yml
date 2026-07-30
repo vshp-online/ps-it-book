@@ -47,6 +47,7 @@ book:
         - book/chapters/04-associations/03-contingency-tables.qmd
         - book/chapters/04-associations/04-correlation-analysis.qmd
         - book/chapters/04-associations/05-linear-regression.qmd
+        - book/chapters/04-associations/06-regression-practice.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
