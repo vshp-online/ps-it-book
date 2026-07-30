@@ -36,6 +36,7 @@ book:
       chapters:
         - book/chapters/04-associations/01-associations.qmd
         - book/chapters/04-associations/02-diagrams.qmd
+        - book/chapters/04-associations/03-contingency-tables.qmd
     - part: "Динамические ряды и методы их анализа в бизнесе"
       chapters:
         - book/chapters/05-time-series-analysis/01-time-series-analysis.qmd

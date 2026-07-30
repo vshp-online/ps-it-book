@@ -44,6 +44,7 @@ book:
       chapters:
         - book/chapters/04-associations/01-associations.qmd
         - book/chapters/04-associations/02-diagrams.qmd
+        - book/chapters/04-associations/03-contingency-tables.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
