@@ -13,14 +13,23 @@ output_dir="$project_root/tmp/editable"
 output_name="probability-statistics-for-it-entrepreneurs"
 docx_path="$output_dir/$output_name.docx"
 odt_path="$output_dir/$output_name.odt"
-lo_profile="$(mktemp -d "$TMPDIR/libreoffice-export.XXXXXX")"
+with_odt=false
 
-mkdir -p "$output_dir"
-
-if ! command -v soffice >/dev/null 2>&1; then
-  echo "LibreOffice не найден: команда soffice недоступна" >&2
-  exit 1
+if [[ $# -gt 1 ]]; then
+  echo "Использование: scripts/export-editable.sh [--with-odt]" >&2
+  exit 2
 fi
+
+if [[ $# -eq 1 ]]; then
+  if [[ "$1" != "--with-odt" ]]; then
+    echo "Неизвестный параметр: $1" >&2
+    echo "Использование: scripts/export-editable.sh [--with-odt]" >&2
+    exit 2
+  fi
+  with_odt=true
+fi
+
+mkdir -p "$TMPDIR" "$output_dir"
 
 quarto render --profile editable,part --to docx
 
@@ -29,17 +38,29 @@ if [[ ! -s "$docx_path" ]]; then
   exit 1
 fi
 
-find "$output_dir" -maxdepth 1 -type f -name "$output_name.odt" -delete
+printf 'Создан:\n%s\n' "$docx_path"
 
-soffice --headless \
-  -env:UserInstallation="file://$lo_profile" \
-  --convert-to odt \
-  --outdir "$output_dir" \
-  "$docx_path"
+if [[ "$with_odt" == true ]]; then
+  if ! command -v soffice >/dev/null 2>&1; then
+    echo "LibreOffice не найден: команда soffice недоступна" >&2
+    exit 1
+  fi
 
-if [[ ! -s "$odt_path" ]]; then
-  echo "ODT не создан: $odt_path" >&2
-  exit 1
+  lo_profile="$(mktemp -d "$TMPDIR/libreoffice-export.XXXXXX")"
+  trap 'rm -rf -- "$lo_profile"' EXIT
+
+  find "$output_dir" -maxdepth 1 -type f -name "$output_name.odt" -delete
+
+  soffice --headless \
+    -env:UserInstallation="file://$lo_profile" \
+    --convert-to odt \
+    --outdir "$output_dir" \
+    "$docx_path"
+
+  if [[ ! -s "$odt_path" ]]; then
+    echo "ODT не создан: $odt_path" >&2
+    exit 1
+  fi
+
+  printf 'Дополнительно создан:\n%s\n' "$odt_path"
 fi
-
-printf 'Созданы:\n%s\n%s\n' "$docx_path" "$odt_path"
