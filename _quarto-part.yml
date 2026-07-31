@@ -51,6 +51,10 @@ book:
         - book/chapters/04-associations/07-nonlinear-logistic-regression.qmd
         - book/chapters/04-associations/08-self-check.qmd
         - book/chapters/04-associations/09-test-tasks.qmd
+    - part: "Динамические ряды и методы их анализа в бизнесе"
+      chapters:
+        - book/chapters/05-time-series-analysis/01-time-series-analysis.qmd
+        - book/chapters/05-time-series-analysis/02-dynamics-indicators.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
