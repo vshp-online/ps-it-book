@@ -47,6 +47,8 @@ book:
       chapters:
         - book/chapters/05-time-series-analysis/01-time-series-analysis.qmd
         - book/chapters/05-time-series-analysis/02-dynamics-indicators.qmd
+        - book/chapters/05-time-series-analysis/03-components-and-smoothing.qmd
+        - book/chapters/05-time-series-analysis/04-forecasting.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd

@@ -3,4 +3,6 @@ project:
   output-dir: tmp/check
   resources:
     - code/data/interval-estimation-calc.ods
+    - code/data/monthly-orders-time-series.csv
+    - code/data/monthly-orders-forecast-evaluation.csv
     - "!tmp/**"

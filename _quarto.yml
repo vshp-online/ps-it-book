@@ -4,6 +4,8 @@ project:
     - code/data/interval-estimation-calc.ods
     - code/data/empirical-distribution-calc.ods
     - code/data/order-processing-times.csv
+    - code/data/monthly-orders-time-series.csv
+    - code/data/monthly-orders-forecast-evaluation.csv
     - "!tmp/**"
 
 profile:
