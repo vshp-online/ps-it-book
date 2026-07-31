@@ -1,0 +1,39 @@
+```python
+import csv
+
+import numpy as np
+
+with open(
+    "code/data/monthly-orders-time-series.csv",
+    encoding="utf-8",
+) as source:
+    rows = list(csv.DictReader(source))
+
+orders = np.array([float(row["orders"]) for row in rows])
+history = orders[:36].tolist()
+actual_control = orders[36:]
+forecasts = {
+    "Наивный": [],
+    "Сезонный": [],
+    "С дрейфом": [],
+    "Средняя (3)": [],
+}
+
+for actual in actual_control:
+    forecasts["Наивный"].append(history[-1])
+    forecasts["Сезонный"].append(history[-12])
+    mean_change = (history[-1] - history[0]) / (len(history) - 1)
+    forecasts["С дрейфом"].append(history[-1] + mean_change)
+    forecasts["Средняя (3)"].append(np.mean(history[-3:]))
+    history.append(actual)
+
+for method, values in forecasts.items():
+    errors = actual_control - np.array(values)
+    mae = np.mean(np.abs(errors))
+    rmse = np.sqrt(np.mean(errors**2))
+    mape = 100 * np.mean(np.abs(errors / actual_control))
+    print(
+        f"{method:12s} MAE={mae:5.1f}; "
+        f"RMSE={rmse:5.1f}; MAPE={mape:4.1f}%"
+    )
+```
