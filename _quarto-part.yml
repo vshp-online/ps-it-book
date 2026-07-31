@@ -48,6 +48,9 @@ book:
         - book/chapters/04-associations/04-correlation-analysis.qmd
         - book/chapters/04-associations/05-linear-regression.qmd
         - book/chapters/04-associations/06-regression-practice.qmd
+        - book/chapters/04-associations/07-nonlinear-logistic-regression.qmd
+        - book/chapters/04-associations/08-self-check.qmd
+        - book/chapters/04-associations/09-test-tasks.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
