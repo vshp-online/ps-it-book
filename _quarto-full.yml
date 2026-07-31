@@ -50,6 +50,8 @@ book:
         - book/chapters/05-time-series-analysis/03-components-and-smoothing.qmd
         - book/chapters/05-time-series-analysis/04-forecasting.qmd
         - book/chapters/05-time-series-analysis/05-time-series-practice.qmd
+        - book/chapters/05-time-series-analysis/06-self-check.qmd
+        - book/chapters/05-time-series-analysis/07-test-tasks.qmd
   appendices:
     - book/appendices/01-test-answer-keys.qmd
   references: references.qmd
