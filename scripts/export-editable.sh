@@ -12,6 +12,7 @@ export BOOK_BUILD_TIME="${BOOK_BUILD_TIME:-$(date '+%d.%m.%Y %H:%M:%S %Z')}"
 output_dir="$project_root/tmp/editable"
 output_name="probability-statistics-for-it-entrepreneurs"
 docx_path="$output_dir/$output_name.docx"
+processed_docx_path="$output_dir/$output_name.processed.docx"
 odt_path="$output_dir/$output_name.odt"
 with_odt=false
 
@@ -37,6 +38,15 @@ if [[ ! -s "$docx_path" ]]; then
   echo "DOCX не создан: $docx_path" >&2
   exit 1
 fi
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "Python 3 не найден: он необходим для постобработки DOCX" >&2
+  exit 1
+fi
+
+find "$output_dir" -maxdepth 1 -type f -name "$output_name.processed.docx" -delete
+python3 scripts/postprocess-editable-docx.py "$docx_path" "$processed_docx_path"
+mv "$processed_docx_path" "$docx_path"
 
 printf 'Создан:\n%s\n' "$docx_path"
 

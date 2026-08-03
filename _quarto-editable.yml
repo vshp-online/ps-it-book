@@ -3,3 +3,7 @@ project:
   resources:
     - code/data/interval-estimation-calc.ods
     - "!tmp/**"
+
+format:
+  docx:
+    reference-doc: book/templates/editorial-reference.docx

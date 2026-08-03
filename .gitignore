@@ -22,6 +22,7 @@ __pycache__/
 
 # Documents
 **/*.docx
+!book/templates/editorial-reference.docx
 
 # Imported files / projects
 imported/
