@@ -7,6 +7,7 @@ project:
     - code/data/monthly-orders-time-series.csv
     - code/data/monthly-orders-forecast-evaluation.csv
     - code/data/monthly-orders-forecast-calc.ods
+    - code/data/EuStockMarkets.csv
     - "!tmp/**"
 
 profile:
